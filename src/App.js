@@ -1,12 +1,12 @@
 import React from "react";
-import Filtro from "./components/Filtro/Filtro";
-import Carrinho from "./components/Carrinho/Carrinho";
+// import Filtro from "./components/Filtro/Filtro";
+// import Carrinho from "./components/Carrinho/Carrinho";
 import Produtos from "./components/Produtos/Produtos";
 
 class App extends React.Component {
   state = {
     
-    carrinho: [{ id: Date.now() + 3, nome: "produto 4", preco: 400, img: "", qtd: "" }],
+    carrinho: [],
     
     produtos: [
       { id: Date.now(), nome: "produto 1", preco: 400, img: "" },
@@ -16,7 +16,9 @@ class App extends React.Component {
     ],
     
     produtosFiltrados: [
-      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: "" }
+      { id: Date.now() + 5, nome: "produto 6", preco: 400, img: 'https://picsum.photos/id/238/250/250' },
+      { id: Date.now() + 4, nome: "produto 5", preco: 400, img: 'https://picsum.photos/id/237/250/250' },
+      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: 'https://picsum.photos/id/239/250/250' },
     ]
   };
 
@@ -44,9 +46,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Filtro produtos={this.state.produtos} filtro={this.onChangeFiltro}/>
-        <Produtos produtosFiltrados={this.state.produtosFiltrados} addCarrinho={this.onClickProdutos}/>
-        <Carrinho carrinho={this.state.carrinho} removeCarrinho={this.oncClickCarrinho}/>
+        {/* <Filtro produtos={this.state.produtos} filtro={this.onChangeFiltro}/> */}
+        <Produtos produtosFiltrados={this.state.produtosFiltrados} addCarrinho={this.onClickProdutos} carrinho={this.state.carrinho}/>
+        {/* <Carrinho carrinho={this.state.carrinho} removeCarrinho={this.oncClickCarrinho}/> */}
       </div>
     );
   }
