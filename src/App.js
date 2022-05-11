@@ -16,9 +16,10 @@ class App extends React.Component {
     ],
     
     produtosFiltrados: [
-      { id: Date.now() + 5, nome: "produto 6", preco: 400, img: 'https://picsum.photos/id/238/250/250' },
-      { id: Date.now() + 4, nome: "produto 5", preco: 400, img: 'https://picsum.photos/id/237/250/250' },
-      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: 'https://picsum.photos/id/239/250/250' },
+      { id: Date.now() + 5, nome: "produto 6", preco: 400, img: 'https://picsum.photos/id/238/200/250' },
+      { id: Date.now() + 4, nome: "produto 5", preco: 400, img: 'https://picsum.photos/id/237/200/250' },
+      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: 'https://picsum.photos/id/239/200/250' },
+      { id: Date.now() + 6, nome: "produto 7", preco: 400, img: 'https://picsum.photos/id/240/200/250' },
     ]
   };
 

@@ -4,21 +4,65 @@ import styled from 'styled-components'
 
 const Div = styled.div`
 display: flex;
+width: 670px;
+flex-wrap: wrap;
+/* background-color: lightgray; */
+
+span{
+    display: block;
+}
+@media(max-width: 400px) {
+    width: 400px;
+  }
 `
 
 const DivProduto = styled.div`
-border: 1px solid black;
+border: none;
+border-radius: 5px;
 
-width: 250px;
+width: 200px;
 align-items: center;
 display:flex;
 flex-direction: column;
 margin: 10px;
+height: 340px;
+
+box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+z-index: 1;
+
+@media(max-width: 400px) {
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;
+  }
+`
+
+const Button = styled.button`
+border: 1px solid black;
+background-color: transparent;
+border-radius: 5px;
+margin-top: 10px;
+cursor: pointer;
+
+&:hover{
+    background-color: lightblue;
+}
+`
+
+const DivOrdenacao = styled.div`
+display: flex;
+justify-content: space-between;
+width: 100%;
+`
+
+const Centralizar = styled.div`
+display: flex;
+justify-content: center;
 `
 
 class Produtos extends React.Component{
     state = {
-        ordenacao: ''
+        ordenacao: 'crescente'
     }
 
     // método que verifica o tipo de ordenação
@@ -88,19 +132,27 @@ class Produtos extends React.Component{
         const produtosNaTela = ordenacaoProdutos.map((produto)=>{
             return <DivProduto key={produto.id}>
                 <div><img src={produto.img} alt='imagem teste' /></div> 
-                {produto.nome} 
-                <button onClick={() => this.addCarrinho(produto)}>Add ao carrinho</button>
+                <div>
+                    <div>
+                        <span>{produto.nome} </span>
+                        <span> R${produto.preco}</span>
+                    </div>
+                    <Button onClick={() => this.addCarrinho(produto)}>Add ao carrinho</Button>
+                </div>
                 </DivProduto>
         })
-        return <>
+        return <Centralizar>
         <div>
-            <div>quantidade de produtos {this.props.produtosFiltrados.length} 
+            <DivOrdenacao><span>quantidade de produtos: {this.props.produtosFiltrados.length} </span>
+                <div>
                 <label>ordenação: </label>
                 <select value={this.state.ordenacao}
                 onChange={this.onChangeSelect}>
                     <option value='crescente'>Crescente</option>
                     <option value='decrescente'>Decrescente</option>
-                </select></div>
+                </select>
+                    </div>
+                </DivOrdenacao>
             <Div>   
                 {produtosNaTela}
             </Div>
@@ -109,7 +161,7 @@ class Produtos extends React.Component{
                 {this.props.carrinho.length > 0 &&  `qtd: ${this.props.carrinho[0].qtd}`}
             </div>
         </div>
-        </>
+        </Centralizar>
     }
 }
 
