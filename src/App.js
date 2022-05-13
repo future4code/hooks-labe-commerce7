@@ -1,6 +1,6 @@
 import React from "react";
 import Filtro from "./components/Filtro/Filtro";
-import Carrinho from "./components/Carrinho/Carrinho";
+import Carrinho from "./components/Carrinho";
 import Produtos from "./components/Produtos/Produtos";
 
 class App extends React.Component {
