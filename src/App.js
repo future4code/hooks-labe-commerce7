@@ -6,18 +6,19 @@ import Produtos from "./components/Produtos/Produtos";
 class App extends React.Component {
   state = {
     
-    carrinho: [{ id: Date.now() + 3, nome: "produto 4", preco: 400, img: "", qtd: "" }],
+    carrinho: [],
     
     produtos: [
-      { id: Date.now(), nome: "produto 1", preco: 400, img: "" },
-      { id: Date.now() + 1, nome: "produto 2", preco: 400, img: "" },
-      { id: Date.now() + 2, nome: "produto 3", preco: 400, img: "" },
-      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: "" }
     ],
     
     produtosFiltrados: [
-      { id: Date.now() + 3, nome: "produto 4", preco: 400, img: "" }
-    ]
+      { id: Date.now() + 5, nome: "BuzzLightear", preco: 100, img: 'https://53831.cdn.lojaquevende.com.br/static/53831/sku/brinquedos-ggh39-toy-story-buzz-voo-espacial-1595965150692.jpg' },
+      { id: Date.now() + 4, nome: "Nave espacial", preco: 80, img: 'https://photos.enjoei.com.br/miniatura-nave-espacial-foguete-atlantis-nasa-brinquedo-54453071/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy80MTc5Mi8wNTM5ZTBkMzY2ZjhkYWFiZmE3NWI1OTcxYTBhM2Y5My5qcGc' },
+      { id: Date.now() + 3, nome: "OVNI", preco: 30, img: 'https://www.dhresource.com/0x0/f2/albu/g8/M00/91/48/rBVaVF18Pm6APiQdAALVO_ymJoE091.jpg' },
+      { id: Date.now() + 6, nome: "Rover de exploração", preco: 35, img: 'https://rihappy.vtexassets.com/arquivos/ids/1226207/Rover-Espacial---Fun-Brinquedos--0.jpg?v=637516713964400000' },
+      { id: Date.now() + 7, nome: "Foguete espacial", preco: 70, img: 'https://carrefourbr.vtexassets.com/arquivos/ids/5510565/MP27846312_Foguete-Espacial-com-Mini-Figuras---Fun-Brinquedos_2_Zoom.jpg?v=637324190082230000' },
+      { id: Date.now() + 8, nome: "Arma espacial", preco: 100, img: 'https://d2r9epyceweg5n.cloudfront.net/stores/903/122/products/dmt6149_a1-7025748d3ff94fd7b216240539483618-1024-1024.jpg' },
+      { id: Date.now() + 9, nome: "Lego Star-Wars", preco: 250, img: 'https://drogariamoderna.vteximg.com.br/arquivos/ids/167216-1000-1000/star-wars-veiculo-11396-058784-058784-1.jpg?v=637395787805600000' },]
   };
 
   /* recebe os produtos filtrados
@@ -44,9 +45,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Filtro produtos={this.state.produtos} filtro={this.onChangeFiltro}/>
-        <Produtos produtosFiltrados={this.state.produtosFiltrados} addCarrinho={this.onClickProdutos}/>
-        <Carrinho carrinho={this.state.carrinho} removeCarrinho={this.oncClickCarrinho}/>
+        {/* <Filtro produtos={this.state.produtos} filtro={this.onChangeFiltro}/> */}
+        <Produtos produtosFiltrados={this.state.produtosFiltrados} addCarrinho={this.onClickProdutos} carrinho={this.state.carrinho}/>
+        {/* <Carrinho carrinho={this.state.carrinho} removeCarrinho={this.oncClickCarrinho}/> */}
       </div>
     );
   }
