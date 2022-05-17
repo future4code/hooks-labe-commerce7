@@ -1,82 +1,83 @@
-import { render } from "@testing-library/react";
+
 import React from "react";
+import styled from "styled-components";
 
-class MeuCarrinho extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            qtd: 0
-        };
-        
-    this.carrinho = this.carrinho.bind(this);
-    this.removeCarrinho = this.removeCarrinho.bind(this);
-    }
-   
-    removeQtd(){
-            this.setState({
-                qtd: this.state.qtd -1
-            });
-    }
+const DivProdutoCarrinho = styled.div`
+background-color: #bbd2ec;
+border-radius: 5px;
+margin: 15px;
+padding: 10px;
+color: #7c6ea7;
+display: flex;
+flex-direction: column;
+align-items: center;
 
-    removeProduto(){
-        this.setState({
-            qtd: this.state.qtd 
-        });
+span{
+    margin: 0 10px;
 }
-    
-    render(){
-        return(
-            <div>
-                <div className= "row form-group">
-                    <div className= "col-sm-10">
-                       <h4>{this.props.nome} : R$ {this.props.preco}</h4> 
-                    </div>
-                    <div className= "col-sm-2 text-right">
-                        Quantidade: {this.props.qtd}
-                    </div>
-                    <div className="col-6 text-right">
-                        <button className="btn btn-outline-primary" onClick="{this.removeQtd}">-1</button>
-                        <button className="btn btn-outline-primary" onClick="{this.removeProduto}">Remover</button>
-                    </div>
-                </div>
-                <hr/>
-            </div>
-        );
-    }
+`
+
+const Div = styled.div`
+background-color: #3e77b6;
+height: 100%;
+display: flex;
+flex-direction: column;
+`
+
+const Button = styled.button`
+border: 1px solid #7c6ea7;
+background-color: transparent;
+border-radius: 5px;
+margin: 10px 0;
+cursor: pointer;
+color: #7c6ea7;
+
+display: flex;
+align-items: center;
+
+&:hover{
+    border: none;
+    background-color: #7c6ea7;
+    color: #bbd2ec;
+    -webkit-transition: background-color 500ms ease-in-out;
+    -ms-transition: background-color 500ms ease-in-out;
+    transition: background-color 500ms ease-in-out;
 }
+`
       
-class ListaDeProdutos extends React.Component{
-    constructor(props){
-    super(props);
-    this.state = {
-        produtos: ""
-    };
-}
-componentDidMount(){
-    setTimeout(()=> {
-        this.setState({produtos: produtos})
-     }, 1000);
+class Carrinho extends React.Component{
+    state = {}
+
+
+    removerDoCarrinho = (produto)=>{
+        const carrinhoAuxiliar = this.props.carrinho.filter((prod)=>{
+            return prod.id !== produto.id
+        })
+        this.props.removeCarrinho(carrinhoAuxiliar)
     }
 
     render(){
-        if(!this.state.produtos)
-        return <p>Carregando...</p>;
 
-        const component = this;
-        const prod = this.state.produtos.map(function(prod){
+        const prod = this.props.carrinho.map((prod)=>{
             return(
-                <produto nome={prod.nome}
-                preco={prod.preco}/>
+                <DivProdutoCarrinho key={prod.id}>
+                    <div>
+                        prod:{prod.nome}
+                    </div>
+                    <span>qtd:{prod.qtd} </span>
+                    <span> R${prod.preco * prod.qtd}</span>
+                    <Button onClick={()=>this.removerDoCarrinho(prod)}> remover produto</Button>
+                    </DivProdutoCarrinho>
             );
         });
         return(
-            <div>
+            <Div>
             {prod}
-            </div>
+            </Div>
         );
         }
 }
 
             
 
-export default MeuCarrinho;
+export default Carrinho;
