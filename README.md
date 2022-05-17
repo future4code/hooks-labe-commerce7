@@ -9,7 +9,7 @@ O e-commerce de brinquedos com temática espacial!
 
 ## funcionalidades:
 
-*É possível buscar pelo nome do produto
-*É possível filtrar por preço MIN e preçõ MAX
-*É possível ordenar por preço ou nome em ordem crescente ou decrescente
-*É possível adicionar e remover produto ao/do carrinho
+* É possível buscar pelo nome do produto
+* É possível filtrar por preço MIN e preçõ MAX
+* É possível ordenar por preço ou nome em ordem crescente ou decrescente
+* É possível adicionar e remover produto ao/do carrinho
