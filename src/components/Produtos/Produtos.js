@@ -220,17 +220,11 @@ class Produtos extends React.Component{
                     </select>
                 </div>
 
-                {/* teste */}
-                {/* {this.props.carrinho.length>0 && `nome: ${this.props.carrinho[0].nome}` }
-                {this.props.carrinho.length>0 && `qtd: ${this.props.carrinho[0].qtd}` } */}
             </DivOrdenacao>
             <Div>   
                 {produtosNaTela}
             </Div>
-            <div>
-                {this.props.carrinho.length > 0 && this.props.carrinho[0].nome}
-                {this.props.carrinho.length > 0 &&  `qtd: ${this.props.carrinho[0].qtd}`}
-            </div>
+            
         </div>
         </Centralizar>
     }
